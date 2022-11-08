@@ -1,16 +1,19 @@
-# counter_7
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ TUGAS 7 BALQIS ASY-SYIFA LUMBUN 2106751184
+ Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
+ 
+ Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+ Button, Text
+ 
+ Apa fungsi dari setState()? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
+ Menetapkan sebuah state bila terdapat kondisi yang terpenuhi.
+ 
+ Jelaskan perbedaan antara const dengan final.
+ 
+ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+ 1. Membuat app Flutter
+ 2. Set counter, String ganjil genap, set boolean isVisible
+ 3. Membuat increment dan decrement counter
+ 4. Membuat class color untuk mengganti warna text ketika counter bernilai ganjil atau genap
+ 5. Meletakkan Text genap ganjil dan decrement counter button di body scaffolding
+ 
+ 
