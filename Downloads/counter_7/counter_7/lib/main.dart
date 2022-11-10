@@ -138,27 +138,43 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            '$_gengan',
-            style: TextStyle(color: getColor()),
-            // style: TextStyle(color: Colors.blue),
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '$_gengan',
+                style: TextStyle(color: getColor()),
+                // style: TextStyle(color: Colors.blue),
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ],
           ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.headline4,
+          Container(
+            height: 200.0,
+            width: 350.0,
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               if (isVisible)
-                FloatingActionButton(
-                  onPressed: _decrementCounter,
-                  child: const Icon(Icons.remove),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: FloatingActionButton(
+                    onPressed: _decrementCounter,
+                    child: const Icon(Icons.remove),
+                  ),
                 ),
-              FloatingActionButton(
-                onPressed: _incrementCounter,
-                child: const Icon(Icons.add),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: FloatingActionButton(
+                  onPressed: _incrementCounter,
+                  child: const Icon(Icons.add),
+                ),
               ),
               // tooltip: 'Increment',
               // tooltip: 'Decrement',

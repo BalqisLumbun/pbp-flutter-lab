@@ -158,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 350.0,
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               if (isVisible)
