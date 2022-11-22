@@ -1,0 +1,84 @@
+[{
+        "id": 1,
+        "watched": true,
+        "title": "My Neighbor Mbah Toro",
+        "rating": "5",
+        "release_date": "2000-05-20",
+        "review": "Dikira plagiat Totoro, tapi kok horor."
+    },
+    {
+        "id": 2,
+        "watched": true,
+        "title": "Sun Dong Yang",
+        "rating": "3",
+        "release_date": "1999-12-10",
+        "review": "Film Korea ala-ala."
+
+    },
+    {
+        "id": 3,
+        "watched": false,
+        "title": "Down",
+        "rating": "4",
+        "release_date": "2009-06-01",
+        "review": "Mirip film Disney yang UP itu tapi bikin breakdown."
+
+    },
+    {
+        "id": 4,
+        "watched": true,
+        "title": "Di balik Drama Twitter",
+        "rating": "5",
+        "release_date": "2020-09-22",
+        "review": "Seorang netizen dituduh melakukan hal kurang baik di Twitter, lalu muncul akun aneh mirip dirinya."
+    },
+    {
+        "id": 5,
+        "watched": false,
+        "title": "Overtale",
+        "rating": "5",
+        "release_date": "2018-02-19",
+        "review": "Frisk bertemu sebuah komputer dan memainkan Overwatch. Tetapi ternyata itu mengubah dunianya."
+    },
+    {
+        "id": 6,
+        "watched": true,
+        "title": "Rekaman CCTV",
+        "rating": "2",
+        "release_date": "2010-03-05",
+        "review": "Rekaman CCTV di sebuah mal di Bekasi."
+    },
+    {
+        "id": 7,
+        "watched": true,
+        "title": "Coboy Junior",
+        "rating": "5",
+        "release_date": "2015-10-21",
+        "review": "Tak perlu tunggu hebat untuk berani memulai apa yang kau inginkan, hanya perlu memulai untuk menjadi hebat raih yang kau impikan."
+    },
+    {
+        "id": 8,
+        "watched": false,
+        "title": "Arsip Biru di Tenda Biru",
+        "rating": "3",
+        "release_date": "2021-08-17",
+        "review": "Seorang wibu akhirnya menikah, tetapi pikirannya masih terbayang karakter di sebuah game online."
+    },
+    {
+        "id": 9,
+        "watched": false,
+        "title": "Baby Shark Toys in Japan version",
+        "rating": "1",
+        "release_date": "2017-07-14",
+        "review": "Baby video follow for more"
+    },
+    {
+        "id": 10,
+        "watched": true,
+        "title": "Suster Keramas 2 - Blue Sky",
+        "rating": "4",
+        "release_date": "2011-04-21",
+        "review": "Kehidupan Langit Biru di Suster Keramas 2"
+    }
+
+]

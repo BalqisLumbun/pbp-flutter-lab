@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/form.dart';
-import 'package:counter_7/budget.dart';
-import 'package:counter_7/data.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/budget.dart';
+import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/to_watch.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 void main() {
   runApp(const MyApp());
@@ -151,6 +154,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => dataBudget()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Watch'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToWatchPage()),
                 );
               },
             ),
