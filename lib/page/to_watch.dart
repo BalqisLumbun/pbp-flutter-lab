@@ -94,11 +94,15 @@ class _ToWatchPageState extends State<ToWatchPage> {
                           horizontal: 16, vertical: 12),
                       padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.0),
-                          boxShadow: const [
-                            BoxShadow(color: Colors.black, blurRadius: 1.0)
-                          ]),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                          width: 2.0,
+                          color: (snapshot.data![index].fields.watched
+                              ? Colors.blue
+                              : Colors.red),
+                        ),
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
