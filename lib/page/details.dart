@@ -8,16 +8,19 @@ import 'package:counter_7/page/data.dart';
 import 'package:counter_7/page/to_watch.dart';
 import 'package:flutter/services.dart';
 
-class ShowWatchListDetailsPage extends StatefulWidget {
-  ShowWatchListDetailsPage({super.key, this.watchlistitems});
-  var watchlistitems;
+class ShowWatchListDetailsPage extends StatelessWidget {
+  final MyWatchlist watchlist;
 
-  @override
-  State<ShowWatchListDetailsPage> createState() =>
-      _ShowWatchListDetailsPageState();
-}
+  const ShowWatchListDetailsPage({Key? key, required this.watchlist})
+      : super(key: key);
+  // ShowWatchListDetailsPage({super.key, this.watchlistitems});
+  // var watchlistitems;
 
-class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
+  // @override
+  // State<ShowWatchListDetailsPage> createState() =>
+  //     _ShowWatchListDetailsPageState();
+
+  // class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +80,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    widget.watchlistitems.fields.title,
+                    watchlist.fields.title,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.fade,
                     style: const TextStyle(
@@ -97,8 +100,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text:
-                                    '${widget.watchlistitems.fields.releaseDate}',
+                                text: '${watchlist.fields.releaseDate}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -115,7 +117,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${widget.watchlistitems.fields.rating}',
+                                text: '${watchlist.fields.rating}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -132,7 +134,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${widget.watchlistitems.fields.watched}',
+                                text: '${watchlist.fields.watched}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -149,7 +151,7 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${widget.watchlistitems.fields.review}',
+                                text: '${watchlist.fields.review}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -165,3 +167,4 @@ class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
                 ])));
   }
 }
+// }

@@ -12,23 +12,23 @@ String myWatchlistToJson(List<MyWatchlist> data) =>
 
 class MyWatchlist {
   MyWatchlist({
-    // required this.model,
+    required this.model,
     required this.pk,
     required this.fields,
   });
 
-  // Model model;
+  Model? model;
   int pk;
   Fields fields;
 
   factory MyWatchlist.fromJson(Map<String, dynamic> json) => MyWatchlist(
-        // model: modelValues.map[json["model"]],
+        model: modelValues.map[json["model"]],
         pk: json["pk"],
         fields: Fields.fromJson(json["fields"]),
       );
 
   Map<String, dynamic> toJson() => {
-        // "model": modelValues.reverse[model],
+        "model": modelValues.reverse[model],
         "pk": pk,
         "fields": fields.toJson(),
       };
@@ -67,21 +67,21 @@ class Fields {
       };
 }
 
-// enum Model { MYWATCHLIST_MYWATCHLIST }
+enum Model { MYWATCHLIST_MYWATCHLIST }
 
-// final modelValues =
-//     EnumValues({"mywatchlist.mywatchlist": Model.MYWATCHLIST_MYWATCHLIST});
+final modelValues =
+    EnumValues({"mywatchlist.mywatchlist": Model.MYWATCHLIST_MYWATCHLIST});
 
-// class EnumValues<T> {
-//   Map<String, T> map;
-//   Map<T, String> reverseMap;
+class EnumValues<T> {
+  Map<String, T> map;
+  Map<T, String> reverseMap = {};
 
-//   EnumValues(this.map);
+  EnumValues(this.map);
 
-//   Map<T, String> get reverse {
-//     if (reverseMap == null) {
-//       reverseMap = map.map((k, v) => new MapEntry(v, k));
-//     }
-//     return reverseMap;
-//   }
-// }
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = map.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap;
+  }
+}

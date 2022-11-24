@@ -134,7 +134,7 @@ class _ToWatchPageState extends State<ToWatchPage> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           ShowWatchListDetailsPage(
-                                              watchlistitems:
+                                              watchlist:
                                                   snapshot.data![index])),
                                 );
                               })
