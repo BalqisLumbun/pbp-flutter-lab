@@ -38,8 +38,9 @@ class _MyFormPageState extends State<MyFormPage> {
       drawer: Drawer(
         child: Column(
           children: [
+            // Menambahkan clickable menu
             ListTile(
-              title: const Text('Counter'),
+              title: const Text('Counter_7'),
               onTap: () {
                 // Route menu ke halaman utama
                 Navigator.pushReplacement(
@@ -51,7 +52,7 @@ class _MyFormPageState extends State<MyFormPage> {
             ListTile(
               title: const Text('Tambah Budget'),
               onTap: () {
-                // Route menu ke halaman utama
+                // Route menu ke halaman form
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MyFormPage()),
@@ -64,10 +65,17 @@ class _MyFormPageState extends State<MyFormPage> {
                 // Route menu ke halaman form
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => dataBudget(
-                            budgets: boodget,
-                          )),
+                  MaterialPageRoute(builder: (context) => dataBudget()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Watch'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToWatchPage()),
                 );
               },
             ),

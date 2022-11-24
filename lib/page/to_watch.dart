@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
 import 'package:counter_7/page/form.dart';
 import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/details.dart';
 import 'package:flutter/services.dart';
 
 class ToWatchPage extends StatefulWidget {
@@ -14,60 +15,40 @@ class ToWatchPage extends StatefulWidget {
   _ToWatchPageState createState() => _ToWatchPageState();
 }
 
-class _ToWatchPageState extends State<ToWatchPage> {
-  // var url = Uri.parse(
-  //     'https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10');
+Future<List<MyWatchlist>> fetchToWatchList() async {
+  var url = Uri.parse(
+      'https://tugas-tiga-pbp-balqis.herokuapp.com/mywatchlist/json/');
+  var response = await http.get(
+    url,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  );
 
-  // var response = await http.get(
-  //   url,
-  //   headers: {
-  //     "Access-Control-Allow-Origin": "*",
-  //     "Content-Type": "application/json",
-  //   },
-  // );
-  // var data = jsonDecode(utf8.decode(response.bodyBytes));
+  var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-  List<MyWatchlist> listToWatch = [];
-  Future<List<MyWatchlist>> fetchToWatch() async {
-    final String response =
-        await rootBundle.loadString('assets/my_watchlist.json');
-    final data = await json.decode(response);
-
-    for (var d in data) {
-      listToWatch.add(MyWatchlist.fromJson(d));
+  List<MyWatchlist> listMyWatchList = [];
+  for (var d in data) {
+    if (d != null) {
+      listMyWatchList.add(MyWatchlist.fromJson(d));
     }
-
-    // for (var d in data) {
-    //   if (d != null) {
-    //     listToWatch.add(MyWatchlist.fromJson(d));
-    //   }
-    // }
-    return listToWatch;
-
-    // setState(() {
-    //   listToWatch = data;
-    // });
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   // Call the readJson method when the app starts
-  //   fetchToWatch();
-  // }
+  return listMyWatchList;
+}
 
+class _ToWatchPageState extends State<ToWatchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('To Watch'),
-        ),
+        appBar: AppBar(title: const Text("My Watch List")),
         drawer: Drawer(
           child: Column(
             children: [
               // Menambahkan clickable menu
               ListTile(
-                title: const Text('Counter'),
+                title: const Text('Counter_7'),
                 onTap: () {
                   // Route menu ke halaman utama
                   Navigator.pushReplacement(
@@ -77,7 +58,7 @@ class _ToWatchPageState extends State<ToWatchPage> {
                 },
               ),
               ListTile(
-                title: const Text('Form'),
+                title: const Text('Tambah Budget'),
                 onTap: () {
                   // Route menu ke halaman form
                   Navigator.pushReplacement(
@@ -110,24 +91,59 @@ class _ToWatchPageState extends State<ToWatchPage> {
             ],
           ),
         ),
-        body: Padding(
-            padding: const EdgeInsets.all(25),
-            child: Column(children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: listToWatch.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      key: ValueKey(listToWatch[index].id),
-                      margin: const EdgeInsets.all(10),
-                      color: Colors.amber.shade100,
-                      child: ListTile(
-                        title: Text(listToWatch[index].title),
+        body: FutureBuilder(
+            future: fetchToWatchList(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                if (!snapshot.hasData) {
+                  return Column(
+                    children: const [
+                      Text(
+                        "Tidak Ada Watchlist",
+                        style:
+                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
                       ),
-                    );
-                  },
-                ),
-              )
-            ])));
+                      SizedBox(height: 8),
+                    ],
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.0),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black, blurRadius: 1.0)
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListTile(
+                              title:
+                                  Text('${snapshot.data![index].fields.title}'),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShowWatchListDetailsPage(
+                                              watchlistitems:
+                                                  snapshot.data![index])),
+                                );
+                              })
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              }
+            }));
   }
 }
