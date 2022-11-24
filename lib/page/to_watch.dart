@@ -6,6 +6,7 @@ import 'package:counter_7/main.dart';
 import 'package:counter_7/page/form.dart';
 import 'package:counter_7/page/data.dart';
 import 'package:counter_7/page/details.dart';
+import 'package:counter_7/function/function_fetch_watchlist.dart';
 import 'package:flutter/services.dart';
 
 class ToWatchPage extends StatefulWidget {
@@ -13,29 +14,6 @@ class ToWatchPage extends StatefulWidget {
 
   @override
   _ToWatchPageState createState() => _ToWatchPageState();
-}
-
-Future<List<MyWatchlist>> fetchToWatchList() async {
-  var url = Uri.parse(
-      'https://tugas-tiga-pbp-balqis.herokuapp.com/mywatchlist/json/');
-  var response = await http.get(
-    url,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-    },
-  );
-
-  var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-  List<MyWatchlist> listMyWatchList = [];
-  for (var d in data) {
-    if (d != null) {
-      listMyWatchList.add(MyWatchlist.fromJson(d));
-    }
-  }
-
-  return listMyWatchList;
 }
 
 class _ToWatchPageState extends State<ToWatchPage> {
@@ -134,8 +112,8 @@ class _ToWatchPageState extends State<ToWatchPage> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           ShowWatchListDetailsPage(
-                                              watchlist:
-                                                  snapshot.data![index])),
+                                              watchlist: snapshot
+                                                  .data![index].fields)),
                                 );
                               })
                         ],

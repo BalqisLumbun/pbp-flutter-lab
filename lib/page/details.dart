@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:counter_7/model/mywatchlist.dart';
+import 'package:counter_7/function/function_fetch_watchlist.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
 import 'package:counter_7/page/form.dart';
@@ -8,19 +9,21 @@ import 'package:counter_7/page/data.dart';
 import 'package:counter_7/page/to_watch.dart';
 import 'package:flutter/services.dart';
 
-class ShowWatchListDetailsPage extends StatelessWidget {
-  final MyWatchlist watchlist;
+class ShowWatchListDetailsPage extends StatefulWidget {
+  // final MyWatchlist watchlist;
 
-  const ShowWatchListDetailsPage({Key? key, required this.watchlist})
+  // const ShowWatchListDetailsPage({Key? key, required this.watchlist})
+  //     : super(key: key);
+  ShowWatchListDetailsPage({Key? key, required this.watchlist})
       : super(key: key);
-  // ShowWatchListDetailsPage({super.key, this.watchlistitems});
-  // var watchlistitems;
+  var watchlist;
 
-  // @override
-  // State<ShowWatchListDetailsPage> createState() =>
-  //     _ShowWatchListDetailsPageState();
+  @override
+  State<ShowWatchListDetailsPage> createState() =>
+      _ShowWatchListDetailsPageState();
+}
 
-  // class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
+class _ShowWatchListDetailsPageState extends State<ShowWatchListDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +83,7 @@ class ShowWatchListDetailsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    watchlist.fields.title,
+                    '${widget.watchlist.title}',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.fade,
                     style: const TextStyle(
@@ -100,7 +103,7 @@ class ShowWatchListDetailsPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${watchlist.fields.releaseDate}',
+                                text: '${widget.watchlist.releaseDate}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -117,7 +120,7 @@ class ShowWatchListDetailsPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${watchlist.fields.rating}',
+                                text: '${widget.watchlist.rating}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -134,7 +137,7 @@ class ShowWatchListDetailsPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${watchlist.fields.watched}',
+                                text: '${widget.watchlist.watched}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
@@ -151,7 +154,7 @@ class ShowWatchListDetailsPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                               children: <TextSpan>[
                             TextSpan(
-                                text: '${watchlist.fields.review}',
+                                text: '${widget.watchlist.review}',
                                 style: const TextStyle(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.normal,
